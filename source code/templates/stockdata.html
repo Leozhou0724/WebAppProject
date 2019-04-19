@@ -13,6 +13,10 @@
         y <input name="y" type="text" value={{y}}><br>
         <p><button type="submit">Add</button></p>
         <p>result={{result}}</p>
+        {% if url %}
+        <img src="{{url_for('static',filename='images/predict.png',_t=dynamic)}}" alt="plot pic" width="600" height="400">
+        <img src="{{url}}">
+		{% endif %}
     </form>
 
 </body>
