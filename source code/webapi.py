@@ -2,11 +2,12 @@ from flask import Flask
 from flask import request
 from flask import render_template
 from flask import Response
+from flask_bootstrap import Bootstrap
 from HW3demo import pred
 import time
 
 app = Flask(__name__)
-
+bootstrap=Bootstrap(app)
 
 def add(x):
     return int(x)+10
