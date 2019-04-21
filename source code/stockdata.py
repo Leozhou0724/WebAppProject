@@ -47,9 +47,6 @@ def history(company, start_date, end_date):
     plt.legend(loc=2)
     fig_dict = "static\images\history.png"
     fig.savefig("static\images\history.png")
-    volume = []
-    days = 0
-    day = []
     return fig_dict, data
 
 
