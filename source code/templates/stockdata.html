@@ -1,19 +1,46 @@
-</html>
 {% extends "base.html" %}
+{% from 'bootstrap/form.html' import render_form, render_field, render_form_row %}
 {% block content %}
-<body>
 
-    <h1>Stock Data</h1>
-    <a href="/">Back to home page</a><br>
-    <form action=/stockdata method="POST">
-        x <input name="x" type="text" value={{x}}><br>
-        y <input name="y" type="text" value={{y}}><br>
-        <p><button type="submit">Submit</button></p>
-        <p>result={{result}}</p>
-        {% if url %}
-        <img src="{{url_for('static',filename='images/predict.png',_t=dynamic)}}" alt="plot pic" width="600" height="400">
-		{% endif %}
-    </form>
 
-</body>
+{{ render_form(form) }}
+{% if price %}
+<br>
+<p><b>
+        <font size=6>Realtime data</font>
+    </b></p>
+<p><b>
+        <font size=4>Price:&emsp;&emsp;&nbsp;{{price}}</font>
+    </b></p><br>
+<p><b>
+        <font size=4>Volume:&emsp;&nbsp;{{volume}}</font>
+    </b></p><br>
+<p><b>
+        <font size=4>Time:&emsp;&emsp;&ensp;{{localtime}}</font>
+    </b></p>
+    {% endif %}
+{% if url %}
+<img src="{{url_for('static',filename='images/history.png',_t=dynamic)}}" alt="plot pic" width="800" height="800">
+{% endif %}
+{% if data %}
+<table border="0" width="800">
+    <tr>
+        <td>Date</td>
+        <td>High</td>
+        <td>Low</td>
+        <td>Open</td>
+        <td>Close</td>
+        <td>Volume</td>
+        <td>Adjclose</td>
+    </tr>
+    {% for row in data %}
+    <tr>
+        {% for tuple in row %}
+        <td>{{tuple}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    
+</table>
+{% endif %}
 {% endblock %}

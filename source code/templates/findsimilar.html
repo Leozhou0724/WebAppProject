@@ -1,6 +1,42 @@
 {% extends "base.html" %}
+{% from 'bootstrap/form.html' import render_form, render_field, render_form_row %}
 {% block content %}
-<body>
+
+
+{{ render_form(form) }}
+<br>
+<p><b>
+        <font size=6>Realtime data</font>
+    </b></p>
+<p><b>
+        <font size=4>Price:&emsp;&emsp;&nbsp;{{price}}</font>
+    </b></p><br>
+<p><b>
+        <font size=4>Volume:&emsp;&nbsp;{{volume}}</font>
+    </b></p><br>
+<p><b>
+        <font size=4>Time:&emsp;&emsp;&ensp;{{localtime}}</font>
+    </b></p>
+{% if url %}
+<img src="{{url_for('static',filename='images/history.png',_t=dynamic)}}" alt="plot pic" width="800" height="800">
+{% endif %}
+<table border="0" width="800">
+    <tr>
+        <td>Date</td>
+        <td>High</td>
+        <td>Low</td>
+        <td>Open</td>
+        <td>Close</td>
+        <td>Volume</td>
+        <td>Adjclose</td>
+    </tr>
+    {% for row in data %}
+    <tr>
+        {% for tuple in row %}
+        <td>{{tuple}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
     
-</body>
+</table>
 {% endblock %}
