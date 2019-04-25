@@ -18,17 +18,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 {{ render_nav_item('home', 'Home', use_li=True) }}
-                {{ render_nav_item('stockdata', 'Data', use_li=True) }}
-                {{ render_nav_item('predict', 'Prediction', use_li=True) }}
-                {{ render_nav_item('findsim', 'Trend Finder', use_li=True) }}
+                {{ render_nav_item('api.stockdata', 'Data', use_li=True) }}
+                {{ render_nav_item('api.predict', 'Prediction', use_li=True) }}
+                {{ render_nav_item('api.findsim', 'Trend Finder', use_li=True) }}
+                {{ render_nav_item('api.query_page', 'Extra Query', use_li=True) }}
             </ul>
         </div>
     </nav>
     {% block content %}{% endblock %}
-    <footer class="text-right">
+    <footer class="text-center">
         {% block footer %}
             <br><br><br>
-            <small> <a href="https://github.com/Leozhou0724/WebAppProject" title="Team1">Github</a>
+            <small> <a href="https://github.com/Leozhou0724/WebAppProject" title="Team1">Github</a><br>
+                <a href="/docs/api" title="Team1">API Document</a>
             </small>
         {% endblock %}
     </footer>

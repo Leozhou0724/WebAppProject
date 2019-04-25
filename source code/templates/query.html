@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% from 'bootstrap/form.html' import render_form, render_field, render_form_row %}
+{% block content %}
+
+<p>This page is only for the project requirement 4 Query</p>
+<p>Choose a company<br>
+    Then companies who have the average stock price lesser than the lowest of this
+    company in the latest one year will be listed</p>
+{{ render_form(form) }}
+{% if all_realtime %}
+<p><b>
+        <font size=4><br>Realtime data</font>
+    </b></p>
+<table border="0" width="800">
+    <tr>
+        <td>Symbol</td>
+        <td>Price</td>
+        <td>Volume</td>
+    </tr>
+    {% for row in all_realtime %}
+    <tr>
+        {% for tuple in row %}
+        <td>{{tuple}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+<p><b>
+        <font size=4><br>History data</font>
+    </b></p>
+<table border="0" width="800">
+    <tr>
+        <td>Symbol</td>
+        <td>Highest price in<br> the last ten days</td>
+        <td>Average price in<br> the lastest one year</td>
+        <td>Lowest price in<br> the lastest one year</td>
+    </tr>
+    {% for row in history_data %}
+    <tr>
+        {% for tuple in row %}
+        <td>{{tuple}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+<p><b>
+        <font size=4><br>List of companies who have the average stock price lesser than the lowest of {{selected_company}}
+            in the latest one year</font>
+    </b></p>
+<p>
+    {% for tuple in less_list %}
+    {{tuple}}<br>
+    {% endfor %}
+</p>
+{% endif %}
+{% endblock %}
