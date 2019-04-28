@@ -47,10 +47,10 @@ def sim_trend(company, start_date, end_date):
             date = row[0][0:4] + row[0][5:7] + row[0][8:10]
             total_dates.append(date)
             total_days += 1
-            total_price.append(float(row[1]))
+            total_price.append(float(row[4]))
 
             if date >= start_date and date <= end_date:
-                part_price.append(float(row[1]))
+                part_price.append(float(row[4]))
                 part_day.append(part_days)
                 part_days += 1
                 part_dates.append(date)

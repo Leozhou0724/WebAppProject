@@ -25,9 +25,9 @@ def query(selected_company):
             for row in f_csv:
                 date = row[0][0:4] + row[0][5:7] + row[0][8:10]
                 if date >= '20190405' and date <= '20190418':
-                    price_10day.append(float(row[1]))
+                    price_10day.append(float(row[4]))
                 if date >= '20180101' and date <= '20190101':
-                    price_1year.append(float(row[1]))
+                    price_1year.append(float(row[4]))
         price_10day = np.array(price_10day)
         price_1year = np.array(price_1year)
         single_history.append(symbol)

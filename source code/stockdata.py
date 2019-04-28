@@ -30,7 +30,7 @@ def history(company, start_date, end_date):
         for row in f_csv:
             date = row[0][0:4] + row[0][5:7] + row[0][8:10]
             if date >= start_date and date <= end_date:
-                price.append(float(row[1]))
+                price.append(float(row[4]))
                 volume.append(float(row[5]))
                 day.append(days)
                 days += 1
@@ -40,7 +40,7 @@ def history(company, start_date, end_date):
     day = np.array(day)
     fig = plt.figure(figsize=(10, 12))
     plt.subplot(2, 1, 1)
-    plt.plot(day, price, c="r", label="Highest price")
+    plt.plot(day, price, c="r", label="Close price")
     plt.legend(loc=2)
     plt.subplot(2, 1, 2)
     plt.plot(day, volume, c="b", label="Volume")
