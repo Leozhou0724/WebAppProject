@@ -1,3 +1,10 @@
+'''
+ECE 568 Webapp Project
+Team#1
+
+Written by: Yuhang Zhou  yz853
+2019/5/1
+'''
 from stockdata import realtime
 import numpy as np
 import csv

@@ -1,6 +1,25 @@
 {% extends "base.html" %}
+{% from 'bootstrap/form.html' import render_form, render_field, render_form_row %}
 {% block content %}
-<body>
-    
-</body>
+{{ render_form(form) }}
+
+{% if pred %}
+
+{% if strategy=="svm" %}
+<img src="{{url_for('static',filename='images/svm_model.png',_t=dynamic)}}" alt="plot pic" width="1000" height="600">
+<img src="{{url_for('static',filename='images/svm_pred.png',_t=dynamic)}}" alt="plot pic1" width="1000" height="600">
+{% else %}
+<img src="{{url_for('static',filename='images/Bayes.png',_t=dynamic)}}" alt="plot pic" width="1000" height="600">
+{% endif %}
+<p><b>
+        <font size=4><br>Prediction:</font><br>
+    </b></p>
+
+<p>   
+{% for tuple in pred %}
+{{tuple}},
+{% endfor %}
+</p>
+
+{% endif %}
 {% endblock %}

@@ -1,10 +1,17 @@
+'''
+ECE 568 Webapp Project
+Team#1
+
+Written by: Yuhang Zhou  yz853
+2019/5/1
+'''
 from pandas_datareader import data as pdr
 import datetime
 import time
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
-
+import json
 
 def realtime(company):
     stock = pdr.get_quote_yahoo(company)
@@ -49,11 +56,20 @@ def history(company, start_date, end_date):
     fig.savefig("static\images\history.png")
     return fig_dict, data
 
+def history_json(company):
+    f = open('dataset/{}.csv'.format(company))  
+    reader = csv.DictReader( f, fieldnames = ( 'Date', 'High', 'Low', 'Open', 'Close', 'Volume', 'Adjclose' ))  
+    out = json.dumps([row for row in reader])
+    f.close()
+    return out
+
+
+
+
 
 start_date = '2015-10-01'
 end_date = '2018-01-01'
 company = 'aapl'
-
 
 
 

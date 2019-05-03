@@ -1,3 +1,10 @@
+'''
+ECE 568 Webapp Project
+Team#1
+
+Written by: Haofan Zhang  hz332
+2019/5/1
+'''
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
